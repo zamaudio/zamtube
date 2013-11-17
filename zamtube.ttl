@@ -1,0 +1,130 @@
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix pg: <http://lv2plug.in/ns/ext/port-groups#>.
+@prefix ue: <http://lv2plug.in/ns/extensions/units#>.
+@prefix ll: <http://ll-plugins.nongnu.org/lv2/namespace#>.
+@prefix pprops: <http://lv2plug.in/ns/ext/port-props#>.
+
+<http://zamaudio.com/lv2/zamtube>
+	a lv2:Plugin;
+	a lv2:DistortionPlugin;
+
+	lv2:binary <zamtube.so>;
+	doap:name "ZamTube";
+	doap:maintainer [
+		foaf:name "Damien Zammit";
+		foaf:homepage <http://zamaudio.com>;
+		foaf:mbox <mailto:damien@zamaudio.com>;
+		];
+	doap:license <http://usefulinc.com/doap/licenses/gpl>;
+	ll:pegName "p";
+  
+lv2:port [
+	a lv2:AudioPort, lv2:InputPort;
+	lv2:index 0;
+	lv2:symbol "input";
+	lv2:name "Input";
+	],
+
+	[
+	a lv2:AudioPort, lv2:OutputPort;
+	lv2:index 1;
+	lv2:symbol "output";
+	lv2:name "Output";
+	],
+	
+	[
+	a lv2:ControlPort, lv2:InputPort ;
+	lv2:index 2;
+	lv2:symbol "tubedrive";
+	lv2:name "Tube Drive";
+	lv2:minimum 0.1 ;
+	lv2:maximum 30.0 ;
+	lv2:default 1.0 ;
+	lv2:portProperty pprops:logarithmic;
+	ue:unit ue:coef;
+	],
+	
+	[
+	a lv2:ControlPort, lv2:InputPort ;
+	lv2:index 3;
+	lv2:symbol "bass";
+	lv2:name "Bass";
+	lv2:minimum 0.0 ;
+	lv2:maximum 1.0 ;
+	lv2:default 0.5 ;
+	ue:unit ue:coef;
+	],
+
+	[
+	a lv2:ControlPort, lv2:InputPort ;
+	lv2:index 4;
+	lv2:symbol "middle";
+	lv2:name "Mid";
+	lv2:minimum 0.0 ;
+	lv2:maximum 1.0 ;
+	lv2:default 0.5 ;
+	ue:unit ue:coef;
+	],
+
+	[
+	a lv2:ControlPort, lv2:InputPort ;
+	lv2:index 5;
+	lv2:symbol "treble";
+	lv2:name "Treble";
+	lv2:minimum 0.0 ;
+	lv2:maximum 1.0 ;
+	lv2:default 0.5 ;
+	ue:unit ue:coef;
+	],
+	
+	[
+	a lv2:ControlPort, lv2:InputPort ;
+	lv2:index 6;
+	lv2:symbol "cabinet";
+	lv2:name "Cabinet model";
+	lv2:minimum 0 ;
+	lv2:maximum 24 ;
+	lv2:default 0 ;
+	lv2:portProperty pprops:hasStrictBounds ;
+        lv2:portProperty lv2:integer ;
+        lv2:portProperty lv2:enumeration ;
+        lv2:scalePoint [ rdfs:label "Bassman"; rdf:value 0 ] ;
+        lv2:scalePoint [ rdfs:label "Mesa"; rdf:value 1 ] ;
+        lv2:scalePoint [ rdfs:label "Twin"; rdf:value 2 ] ;
+        lv2:scalePoint [ rdfs:label "Princeton"; rdf:value 3 ] ;
+        lv2:scalePoint [ rdfs:label "JCM800"; rdf:value 4 ] ;
+        lv2:scalePoint [ rdfs:label "JCM2000"; rdf:value 5 ] ;
+        lv2:scalePoint [ rdfs:label "JTM45"; rdf:value 6 ] ;
+        lv2:scalePoint [ rdfs:label "MLead"; rdf:value 7 ] ;
+        lv2:scalePoint [ rdfs:label "M2199"; rdf:value 8 ] ;
+        lv2:scalePoint [ rdfs:label "AC30"; rdf:value 9 ] ;
+        lv2:scalePoint [ rdfs:label "AC15"; rdf:value 10 ] ;
+        lv2:scalePoint [ rdfs:label "Soldano"; rdf:value 11 ] ;
+        lv2:scalePoint [ rdfs:label "Sovtek"; rdf:value 12 ] ;
+        lv2:scalePoint [ rdfs:label "Peavey"; rdf:value 13 ] ;
+        lv2:scalePoint [ rdfs:label "Ibanez"; rdf:value 14 ] ;
+        lv2:scalePoint [ rdfs:label "Roland"; rdf:value 15 ] ;
+        lv2:scalePoint [ rdfs:label "Ampeg"; rdf:value 16 ] ;
+        lv2:scalePoint [ rdfs:label "Ampeg Rev"; rdf:value 17 ] ;
+        lv2:scalePoint [ rdfs:label "Bogner"; rdf:value 18 ] ;
+        lv2:scalePoint [ rdfs:label "Groove"; rdf:value 19 ] ;
+        lv2:scalePoint [ rdfs:label "Crunch"; rdf:value 20 ] ;
+        lv2:scalePoint [ rdfs:label "Fender Blues"; rdf:value 21 ] ;
+        lv2:scalePoint [ rdfs:label "Fender Default"; rdf:value 22 ] ;
+        lv2:scalePoint [ rdfs:label "Fender Deville"; rdf:value 23 ] ;
+        lv2:scalePoint [ rdfs:label "Gibsen"; rdf:value 24 ] ;
+	],
+
+	[
+	a lv2:ControlPort, lv2:InputPort ;
+	lv2:index 7;
+	lv2:symbol "mainout";
+	lv2:name "Output level";
+	lv2:minimum 1.0 ;
+	lv2:maximum 10.0 ;
+	lv2:default 1.0 ;
+	].
