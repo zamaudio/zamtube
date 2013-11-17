@@ -1,5 +1,5 @@
 /*
-wdf.cpp  Test classes for zamtube
+zamtube.cpp  ZamTube - LV2 tube amp/cab simulator (cabinet dsp from guitarix)
 Copyright (C) 2013  Damien Zammit
 
 This program is free software; you can redistribute it and/or
